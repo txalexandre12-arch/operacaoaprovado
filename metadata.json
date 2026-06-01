@@ -1,0 +1,6 @@
+{
+  "name": "Operação Aprovado | PMBA",
+  "description": "Material completo para quem deseja ser aprovado na Polícia Militar da Bahia. Apostila, revisão, mini simulados e estratégia de estudos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

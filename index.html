@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Prevent third-party scripts (like trackers/pixels) from crashing the page on circular structures (e.g. React 19 Elements/Events)
+      (function() {
+        var originalStringify = JSON.stringify;
+        JSON.stringify = function(value, replacer, space) {
+          var seen = new WeakSet();
+          function safeReplacer(key, val) {
+            if (val && typeof val === 'object') {
+              // Gracefully handle DOM nodes
+              if (val instanceof HTMLElement || (typeof val.nodeType === 'number' && typeof val.nodeName === 'string')) {
+                return '[HTMLElement]';
+              }
+              // Skip React 18/19 internals
+              if (key.startsWith('__react') || key.startsWith('__reactFiber') || key.startsWith('__reactProps') || key.startsWith('__reactEvents')) {
+                return undefined;
+              }
+              if (seen.has(val)) {
+                return '[Circular]';
+              }
+              seen.add(val);
+            }
+            if (typeof replacer === 'function') {
+              return replacer(key, val);
+            }
+            return val;
+          }
+          try {
+            return originalStringify(value, replacer || safeReplacer, space);
+          } catch (err) {
+            try {
+              return originalStringify(value, safeReplacer, space);
+            } catch (e) {
+              return '"[Unserializable]"';
+            }
+          }
+        };
+      })();
+    </script>
+
+<script>
+  window.pixelId = "69fe43ca1dd10a2ef3cf627d";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operação Aprovado PMBA 2026 | Material Completo de Estudo</title>
+    <meta name="description" content="Conquiste sua vaga na PMBA com o material mais focado do mercado. Apostila completa, mini simulados, método de revisão e estratégia de aprovados. Acesso imediato!" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-xcod-sck
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
