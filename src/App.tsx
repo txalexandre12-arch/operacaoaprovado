@@ -24,26 +24,15 @@ export default function App() {
       </div>
 
       <main>
-        <div className="relative pt-12 lg:pt-20 pb-20 overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="/pm1.png" 
-              alt="PMBA Hero Background" 
-              className="w-full h-full object-cover opacity-25 grayscale-[10%]"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black" />
-          </div>
-
+        <div className="relative pt-12 lg:pt-20 pb-20 overflow-hidden bg-black">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center px-4 relative z-10"
           >
-            <h1 className="text-3xl md:text-5xl font-black text-center mb-6 max-w-4xl uppercase tracking-tighter leading-tight">
-              A SENSAÇÃO DE ESTUDAR E ESQUECER TUDO <span className="text-red-500">ACABA</span> HOJE.
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center mb-6 max-w-4xl uppercase tracking-normal leading-snug md:leading-normal">
+              A SENSAÇÃO DE ESTUDAR E ESQUECER TUDO <span className="text-red-500 font-extrabold">ACABA HOJE</span>.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 text-center max-w-3xl leading-tight font-medium tracking-tight">
               Revise em minutos, memorize mais rápido e aumente suas chances de aprovação.
@@ -54,7 +43,7 @@ export default function App() {
               <img 
                 src="/mockup. de 2026, 11_12_29.png" 
                 alt="Mockup do Material Preparatório 2026" 
-                className="w-full h-auto max-h-[350px] md:max-h-[450px] object-contain drop-shadow-[0_20px_45px_rgba(79,102,60,0.3)] filter contrast-[1.02] brightness-50"
+                className="w-full h-auto max-h-[350px] md:max-h-[450px] object-contain drop-shadow-[0_20px_50px_rgba(79,102,60,0.65)] filter contrast-[1.05] brightness-110"
                 referrerPolicy="no-referrer"
               />
             </div>
