@@ -154,7 +154,7 @@ export function CompatibleExams() {
           </div>
           <a 
             href="#acesso" 
-            className="w-full md:w-auto px-8 py-3 bg-primary text-white font-sans font-bold rounded-xl text-xs uppercase tracking-widest text-center hover:bg-white hover:text-black transition-all shadow-lg shrink-0 z-10"
+            className="w-full md:w-auto px-6 py-3 bg-primary text-white font-sans font-black rounded-lg text-base uppercase tracking-wide text-center hover:bg-white hover:text-black transition-all shadow-lg shrink-0 z-10"
           >
             Quero Iniciar Hoje
           </a>

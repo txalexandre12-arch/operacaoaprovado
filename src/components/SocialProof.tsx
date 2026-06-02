@@ -28,10 +28,10 @@ export function SocialProof() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Initial delay before showing the first popup
+    // Initial delay before showing the first popup (10 seconds)
     const startTimeout = setTimeout(() => {
       setIsVisible(true);
-    }, 3000);
+    }, 10000);
 
     return () => clearTimeout(startTimeout);
   }, []);
@@ -39,10 +39,10 @@ export function SocialProof() {
   useEffect(() => {
     if (!isVisible) return;
 
-    // Time that the popup remains visible (e.g., 5 seconds)
+    // Time that the popup remains visible (5 seconds)
     const activeTimer = setTimeout(() => {
       setIsVisible(false);
-    }, 5500);
+    }, 5000);
 
     return () => clearTimeout(activeTimer);
   }, [isVisible, currentIndex]);
@@ -50,11 +50,11 @@ export function SocialProof() {
   useEffect(() => {
     if (isVisible) return;
 
-    // Delay between popups (e.g., 6 seconds)
+    // Delay between popups (25 seconds)
     const delayTimer = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % ITEMS.length);
       setIsVisible(true);
-    }, 6000);
+    }, 25000);
 
     return () => clearTimeout(delayTimer);
   }, [isVisible]);
@@ -69,25 +69,25 @@ export function SocialProof() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95, transition: { duration: 0.3 } }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="fixed bottom-4 left-4 z-50 w-[calc(100%-2rem)] sm:w-auto sm:max-w-sm bg-zinc-950/95 backdrop-blur-md rounded-xl border border-white/10 border-l-4 border-l-primary shadow-2xl p-4 flex items-center gap-3.5 select-none"
+          className="fixed bottom-4 left-4 z-50 w-[calc(100%-2rem)] sm:w-auto sm:max-w-sm bg-black/90 backdrop-blur-md rounded-xl border border-white/10 border-l-4 border-l-primary shadow-2xl p-4 flex items-center gap-3.5 select-none text-white"
         >
           {/* Status Icon/Verified Badge */}
           <div className="flex-shrink-0 relative">
             <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary relative shadow-inner">
-              <ShieldCheck size={20} className="text-primary animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-zinc-950 flex items-center justify-center">
-                <div className="w-1 h-1 bg-white rounded-full animate-ping" />
-              </div>
+               <ShieldCheck size={20} className="text-primary animate-pulse" />
+               <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-black flex items-center justify-center">
+                 <div className="w-1 h-1 bg-white rounded-full animate-ping" />
+               </div>
             </div>
           </div>
 
           {/* Social Proof Text Content */}
           <div className="flex-grow min-w-0 pr-1">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-xs font-bold text-gray-200">
+              <span className="text-xs font-bold text-white">
                 {currentItem.name}
               </span>
-              <span className="text-[10px] font-medium text-gray-500 bg-white/5 px-1.5 py-0.5 rounded border border-white/5 uppercase">
+              <span className="text-[10px] font-medium text-zinc-400 bg-white/5 px-1.5 py-0.5 rounded border border-white/5 uppercase">
                 {currentItem.location}
               </span>
             </div>
@@ -99,7 +99,7 @@ export function SocialProof() {
               <Zap size={10} className="text-primary" />
               <span>{currentItem.time}</span>
               <span className="mx-1">•</span>
-              <span className="text-emerald-500 flex items-center gap-0.5">
+              <span className="text-emerald-400 flex items-center gap-0.5">
                 <Check size={8} className="stroke-[3]" /> conexão segura
               </span>
             </div>

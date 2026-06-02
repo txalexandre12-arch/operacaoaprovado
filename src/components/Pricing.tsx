@@ -22,48 +22,28 @@ interface Plan {
 
 const PLANS: Plan[] = [
   {
-    name: "🔰 Plano Simples",
+    name: "🧠 +2.000 FLASHCARDS ESTRATÉGICOS",
     price: "17",
-    type: "Estratégico",
-    features: [
-      { text: "1000 Flashcards", included: true },
-      { text: "Português", included: true },
-      { text: "Direito Constitucional", included: true },
-      { text: "Direito Administrativo", included: true },
-      { text: "Informática", included: true },
-      { text: "Direitos Humanos", included: true },
-      { text: "Matemática e RLM", included: true },
-      { text: "História", included: false },
-      { text: "Atualidades", included: false },
-      { text: "Geografia", included: false },
-      { text: "Cronograma", included: false },
-      { text: "Simulado", included: false },
-      { text: "Método de Revisão", included: false },
-      { text: "Apostila Estratégica", included: false },
-    ],
-    recommended: false,
-    cta: "GARANTIR ACESSO",
-    link: "https://pay.wiapy.com/XE2wQrKGXf",
-  },
-  {
-    name: "🛡️ Plano Completo",
-    price: "27",
-    type: "Elite Premium",
+    type: "",
     iconName: "star",
     features: [
-      { text: "+2.150 Flashcards", included: true },
-      { text: "Todas as matérias", included: true },
-      { text: "História do Brasil", included: true },
-      { text: "Atualidades", included: true },
-      { text: "Geografia", included: true },
+      { text: "+2.150 Flashcards Estratégicos", included: true },
+      { text: "Todas as Matérias Disponíveis", included: true },
+      { text: "Português", included: true },
+      { text: "Matemática e RLM", included: true },
+      { text: "Informática", included: true },
+      { text: "Direitos Humanos", included: true },
+      { text: "Direito Constitucional", included: true },
+      { text: "Direito Administrativo", included: true },
+      { text: "História e Geografia", included: true },
+      { text: "Atualizações Futuras", included: true },
     ],
     bonuses: [
-      "Cronograma de Estudos para Concursos Policiais",
-      "Simulado Completo",
+      "Cronograma Estratégico de Estudos",
       "Método de Revisão Inteligente",
-      "Apostila Estratégica para Concursos Policiais",
-      "Atualizações Futuras",
-      "Acesso Imediato",
+      "Simulado Completo",
+      "Apostila Estratégica",
+      "Atualizações Futuras Gratuitas",
     ],
     recommended: true,
     cta: "GARANTIR ACESSO",
@@ -97,7 +77,7 @@ export function Pricing() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 max-w-4xl mx-auto gap-6 items-stretch">
+        <div className="max-w-md mx-auto">
           {PLANS.map((plan, i) => (
             <motion.div
               key={i}
@@ -113,7 +93,7 @@ export function Pricing() {
             >
               {plan.recommended ? (
                 <div className="absolute -top-3.5 left-6 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-[10px] font-black px-4 py-1.5 uppercase tracking-[0.25em] whitespace-nowrap border border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.4)] rounded-full flex items-center gap-1">
-                  🔥 MELHOR CUSTO-BENEFÍCIO
+                  ⭐ ACESSO IMEDIATO
                 </div>
               ) : (
                 <div className="absolute -top-3 left-6 bg-zinc-950 text-zinc-400 text-[10px] font-black px-4 py-1 uppercase tracking-[0.3em] whitespace-nowrap border border-white/5 shadow-2xl">
@@ -122,9 +102,11 @@ export function Pricing() {
               )}
 
               <div className="mb-6">
-                <div className={`text-[10px] font-bold mb-1 tracking-[0.2em] uppercase ${plan.recommended ? 'text-amber-400' : 'text-gray-500'}`}>
-                   {plan.type}
-                </div>
+                {plan.type && (
+                  <div className={`text-[10px] font-bold mb-1 tracking-[0.2em] uppercase ${plan.recommended ? 'text-amber-400' : 'text-gray-500'}`}>
+                     {plan.type}
+                  </div>
+                )}
                 <div className="flex items-center gap-2">
                   <h3 className="text-2xl font-black uppercase tracking-tight leading-none text-white">{plan.name}</h3>
                   {getIcon(plan.iconName, plan.recommended)}
@@ -195,9 +177,9 @@ export function Pricing() {
                 href={getCheckoutUrl(plan.link)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-5 font-sans font-bold rounded-xl uppercase tracking-[0.2em] transition-all text-xs text-center block ${
+                className={`w-full py-3 px-6 font-sans font-black rounded-lg uppercase tracking-wide transition-all text-base text-center block ${
                 plan.recommended 
-                  ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black hover:scale-[1.02] shadow-[0_4px_25px_rgba(245,158,11,0.3)] font-black" 
+                  ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black hover:scale-[1.02] shadow-[0_4px_25px_rgba(245,158,11,0.3)]" 
                   : "bg-primary text-white hover:bg-neutral-900 transition-colors"
                 }`}
               >

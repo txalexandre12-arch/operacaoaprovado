@@ -1,14 +1,11 @@
-import { Hero } from "./components/Hero";
 import { motion } from "motion/react";
 import { PainSolution } from "./components/PainSolution";
-import { MaterialPreview } from "./components/MaterialPreview";
 import { Pricing } from "./components/Pricing";
 import { Testimonials } from "./components/Testimonials";
 import { CompatibleExams } from "./components/CompatibleExams";
 import { Guarantee } from "./components/Guarantee";
 import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
-import { ExitPopup } from "./components/ExitPopup";
 import { SocialProof } from "./components/SocialProof";
 import { Shield, Smartphone, CreditCard, Sparkles, ArrowRight } from "lucide-react";
 
@@ -16,11 +13,13 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-primary selection:text-black">
       {/* Urgency Pre-header (Relative) */}
-      <div className="bg-primary text-white py-1.5 px-4 text-center overflow-hidden whitespace-nowrap relative z-50">
-        <div className="flex items-center justify-center gap-8 animate-pulse">
-           <span className="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2">
-             <Sparkles size={12} /> ÚLTIMAS VAGAS COM VALOR PROMOCIONAL <Sparkles size={12} />
-           </span>
+      <div className="bg-red-650 bg-[#b91c1c] text-white py-1.5 px-3 text-center relative z-50">
+        <div className="flex items-center justify-center gap-1.5 animate-pulse max-w-full mx-auto">
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.08em] sm:tracking-[0.25em] flex items-center justify-center gap-1.5 text-center text-white leading-tight">
+            <Sparkles size={11} className="shrink-0 text-red-200" />
+            <span>OFERTA LIMITADA APENAS HOJE</span>
+            <Sparkles size={11} className="shrink-0 text-red-200" />
+          </span>
         </div>
       </div>
 
@@ -31,7 +30,7 @@ export default function App() {
             <img 
               src="/pm1.png" 
               alt="PMBA Hero Background" 
-              className="w-full h-full object-cover opacity-60 grayscale-[10%]"
+              className="w-full h-full object-cover opacity-25 grayscale-[10%]"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black" />
@@ -44,37 +43,29 @@ export default function App() {
             className="flex flex-col items-center px-4 relative z-10"
           >
             <h1 className="text-3xl md:text-5xl font-black text-center mb-6 max-w-4xl uppercase tracking-tighter leading-tight">
-              TORNE-SE UM <span className="text-primary">POLICIAL MILITAR</span> EM 2026
+              A SENSAÇÃO DE ESTUDAR E ESQUECER TUDO <span className="text-red-500">ACABA</span> HOJE.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 text-center max-w-3xl leading-tight font-medium tracking-tight">
-              Material desenvolvido para candidatos que desejam <span className="text-white font-semibold">acelerar a memorização</span> para <span className="text-white font-semibold">concursos policiais</span>.
+              Revise em minutos, memorize mais rápido e aumente suas chances de aprovação.
             </p>
-
-            <div className="flex flex-col items-center gap-6 mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 text-primary text-[11px] font-black uppercase tracking-[0.2em] rounded-full">
-                <Shield size={14} />
-                Preparatório Estratégico 2026
-              </div>
-            </div>
 
             {/* Premium Mockup Image Container */}
             <div className="w-full max-w-lg md:max-w-xl mx-auto mb-10 px-4 flex justify-center">
               <img 
                 src="/mockup. de 2026, 11_12_29.png" 
                 alt="Mockup do Material Preparatório 2026" 
-                className="w-full h-auto max-h-[350px] md:max-h-[450px] object-contain drop-shadow-[0_20px_45px_rgba(79,102,60,0.3)] filter contrast-[1.02]"
+                className="w-full h-auto max-h-[350px] md:max-h-[450px] object-contain drop-shadow-[0_20px_45px_rgba(79,102,60,0.3)] filter contrast-[1.02] brightness-50"
                 referrerPolicy="no-referrer"
               />
             </div>
 
-            <a href="#acesso" className="btn-geometric inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 group">
+            <a href="#acesso" className="btn-geometric inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 group">
               QUERO GARANTIR MEU ACESSO
-              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
         </div>
         <PainSolution />
-        <MaterialPreview />
         <div id="depoimentos"><Testimonials /></div>
         <CompatibleExams />
         <Pricing />
@@ -111,8 +102,6 @@ export default function App() {
       </div>
 
       <Footer />
-
-      <ExitPopup />
 
       <SocialProof />
 

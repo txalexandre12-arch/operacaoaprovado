@@ -20,7 +20,7 @@
 
 @layer components {
   .btn-geometric {
-    @apply bg-primary text-white font-sans font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-neutral-900 transition-all transform active:translate-x-[2px] active:translate-y-[2px] text-center uppercase tracking-tight text-lg cursor-pointer;
+    @apply bg-primary text-white font-sans font-black py-3 px-6 rounded-lg shadow-lg hover:bg-neutral-950 transition-all transform active:translate-x-[2px] active:translate-y-[2px] text-center uppercase tracking-wide text-base sm:text-lg cursor-pointer;
   }
   
   .dot-pattern {

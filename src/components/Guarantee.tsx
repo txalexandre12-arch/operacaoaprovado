@@ -31,7 +31,7 @@ export function Guarantee() {
               GARANTIA DE <br/> <span className="text-primary italic">7 DIAS</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed font-medium mb-8">
-              O nosso compromisso é com a sua aprovação. Se em até 7 dias você sentir que o material não é para você, basta nos enviar um e-mail e devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
+              O nosso compromisso é com a sua aprovação. Se em até 7 dias você senti que o material não é para você, basta nos enviar um e-mail e devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
             </p>
             <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-gray-500">
                <Clock size={16} className="text-primary" />

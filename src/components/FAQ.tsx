@@ -32,7 +32,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-24 px-4 bg-[#0a0a0a]">
+    <section className="py-24 px-4 bg-[#0a0a0a] border-t border-white/5">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
@@ -47,7 +47,7 @@ export function FAQ() {
           {FAQS.map((faq, i) => (
             <div 
               key={i} 
-              className={`border transition-all duration-300 ${openIndex === i ? 'border-primary/40 bg-[#111]' : 'border-white/5 bg-[#0d0d0d]'}`}
+              className={`border transition-all duration-300 rounded-xl overflow-hidden ${openIndex === i ? 'border-primary bg-primary/5 shadow-[0_0_20px_rgba(79,102,60,0.2)]' : 'border-white/5 bg-[#111] hover:bg-[#161616]'}`}
             >
               <div 
                 onClick={() => toggle(i)}
@@ -62,7 +62,7 @@ export function FAQ() {
                 {openIndex === i ? (
                   <Minus size={20} className="text-primary" />
                 ) : (
-                  <Plus size={20} className="text-gray-500 group-hover:text-white" />
+                  <Plus size={20} className="text-gray-500 group-hover:text-gray-300" />
                 )}
               </div>
               
