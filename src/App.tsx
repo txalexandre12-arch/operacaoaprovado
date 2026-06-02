@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { PainSolution } from "./components/PainSolution";
 import { Pricing } from "./components/Pricing";
 import { Testimonials } from "./components/Testimonials";
-import { CompatibleExams } from "./components/CompatibleExams";
 import { Guarantee } from "./components/Guarantee";
 import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
@@ -56,7 +55,6 @@ export default function App() {
         </div>
         <PainSolution />
         <div id="depoimentos"><Testimonials /></div>
-        <CompatibleExams />
         <Pricing />
         <Guarantee />
         <div id="faq"><FAQ /></div>
