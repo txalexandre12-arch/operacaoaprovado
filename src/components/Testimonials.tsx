@@ -117,7 +117,6 @@ export function Testimonials() {
 
                 {/* Snip card description / golden subtitle */}
                 <div className="bg-black/40 rounded-xl p-3 border border-dashed border-zinc-800/80">
-                  <span className="text-[9px] text-[#d4af37] font-black uppercase tracking-widest block mb-1">DESTAQUE DO RELATO</span>
                   <p className="text-[11px] sm:text-xs font-bold text-zinc-300 uppercase tracking-tight leading-relaxed italic" dangerouslySetInnerHTML={{ __html: SNIPPETS[i] }} />
                 </div>
               </motion.div>
