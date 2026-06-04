@@ -1,42 +1,43 @@
-import { ShieldCheck, Calendar, Clock } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
 
 export function Guarantee() {
   return (
-    <section className="py-24 px-4 bg-[#0a0a0a] border-t border-white/5">
+    <section className="py-24 px-4 bg-[#0a0a0a] border-b border-white/5 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+
       <div className="max-w-4xl mx-auto">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="bg-blue-dark/10 border border-primary/20 p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden"
+          className="bg-[#0c0c0c] border border-white/5 p-8 md:p-14 rounded-3xl flex flex-col md:flex-row items-center gap-10 md:gap-14 relative overflow-hidden shadow-2xl"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] -z-10" />
+          {/* Glowing element behind seal */}
+          <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 blur-3xl rounded-full" />
           
-          <div className="relative shrink-0">
+          <div className="relative shrink-0 select-none">
             <img 
               src="/Selo.png" 
               alt="Garantia de 7 Dias" 
-              className="w-36 md:w-52 h-auto object-contain filter drop-shadow-[0_10px_30px_rgba(79,102,60,0.2)]"
+              className="w-32 md:w-44 h-auto object-contain filter drop-shadow-[0_15px_30px_rgba(79,102,60,0.35)] transition-transform duration-500 hover:scale-105"
               referrerPolicy="no-referrer"
             />
           </div>
 
-          <div className="text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-primary font-black uppercase text-[10px] tracking-[0.3em] mb-4">
-              <Calendar size={14} />
-              Risco Zero Garantido
-            </div>
-            <h2 className="text-3xl md:text-5xl font-display font-black uppercase tracking-tighter leading-none mb-6">
-              GARANTIA DE <br/> <span className="text-primary italic">7 DIAS</span>
+          <div className="text-center md:text-left flex-1 space-y-4">
+            <span className="inline-flex items-center gap-1.5 text-primary font-black uppercase text-[10px] sm:text-xs tracking-[0.2em] px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-md">
+              <ShieldCheck size={14} className="stroke-[2.5]" />
+              Compromisso e Transparência
+            </span>
+            
+            <h2 className="text-3xl md:text-5xl font-display font-black uppercase tracking-tighter leading-none text-white">
+              TESTE POR 7 DIAS <br className="hidden md:block" /> <span className="text-[#d4af37] italic">SEM RISCO</span>
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed font-medium mb-8">
-              O nosso compromisso é com a sua aprovação. Se em até 7 dias você senti que o material não é para você, basta nos enviar um e-mail e devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
+            
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed font-semibold">
+              Utilize o material. Se por qualquer motivo você sentir que ele não é para você, devolvemos 100% do seu investmento. Bastará nos mandar uma mensagem simples. Sem perguntas, sem burocracia ou ressentimentos.
             </p>
-            <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-gray-500">
-               <Clock size={16} className="text-primary" />
-               Proteção Total ao Consumidor
-            </div>
           </div>
         </motion.div>
       </div>

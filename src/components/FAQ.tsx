@@ -1,26 +1,27 @@
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, HelpCircle } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 const FAQS = [
   {
-    q: "O acesso é vitalício?",
-    a: "Sim! Uma vez que você garantir o seu acesso hoje, o material será seu para sempre, incluindo todas as atualizações futuras para os próximos editais."
+    q: "Preciso ter experiência?",
+    a: "De forma alguma. O nosso sistema foi desenhado metodologicamente para guiar tanto quem já está na jornada de estudos há tempos quanto quem está começando hoje do absoluto zero. A linguagem é simples e direta."
   },
   {
-    q: "Como recebo o material?",
-    a: "Imediatamente após a confirmação do pagamento, você receberá um e-mail com os dados de acesso à nossa plataforma exclusiva de estudos."
+    q: "Serve para qualquer concurso policial?",
+    a: "Sim! Os tópicos abordados (como Português, Criminologia, Direito Constitucional, Administrativo, Humanos, RLM e Informática) são denominadores comuns de altíssima cobrança em praticamente todas as corporações de segurança, como PM, PC, PF, PRF e Guardas Municipais."
+  },
+  {
+    q: "Como recebo o acesso?",
+    a: "Imediatamente de forma digital. Assim que sua inscrição for confirmada pelo gateway seguro de pagamentos, um e-mail automático será disparado contendo seu link permanente de acesso e credenciais exclusivas."
   },
   {
     q: "Funciona no celular?",
-    a: "Totalmente. O conteúdo é otimizado para ser lido em smartphones, tablets ou computadores. Você estuda de onde quiser, quando quiser."
+    a: "Totalmente. O sistema é 100% responsivo e otimizado para celulares, tablets e notebooks. Você pode revisar e fixar a matéria na hora do almoço, na condução ou em qualquer brecha do seu dia com total comodidade."
   },
   {
-    q: "Serve para iniciantes?",
-    a: "Com certeza. O material foi estruturado de forma didática, partindo do zero até o nível avançado exigido pela prova da PMBA."
-  },
-  {
-    q: "Tem garantia?",
-    a: "Sim, você tem 7 dias de garantia incondicional. Ou você gosta do material e avança nos estudos, ou devolvemos seu dinheiro."
+    q: "Tenho acesso vitalício?",
+    a: "Sim. O pagamento é único e dá direito a acesso vitalício ao portal de estudos, incluindo quaisquer revisões de conteúdo ou atualizações que fizermos para acompanhar novos editais sem nenhuma cobrança extra futura."
   }
 ];
 
@@ -32,47 +33,70 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-24 px-4 bg-[#0a0a0a] border-t border-white/5">
-      <div className="max-w-3xl mx-auto">
+    <section className="py-24 px-4 bg-[#050505] border-b border-white/5 relative overflow-hidden">
+      <div className="max-w-3xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-             F.A.Q
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.2em] rounded-full mb-4">
+            <HelpCircle size={12} className="stroke-[2.5]" />
+            <span>Dúvidas Frequentes</span>
           </div>
-          <h2 className="text-4xl font-display font-black uppercase tracking-tighter leading-none mb-4">
-            DÚVIDAS <span className="text-primary italic">COMUNS</span>
+          <h2 className="text-3xl md:text-5xl font-display font-black uppercase tracking-tighter leading-none mb-4 text-white">
+            PERGUNTAS RELEVANTES
           </h2>
+          <p className="text-gray-400 text-xs sm:text-sm md:text-base uppercase tracking-wide">
+            Tire suas dúvidas e inicie sua jornada com total clareza e tranquilidade.
+          </p>
         </div>
 
         <div className="space-y-4">
-          {FAQS.map((faq, i) => (
-            <div 
-              key={i} 
-              className={`border transition-all duration-300 rounded-xl overflow-hidden ${openIndex === i ? 'border-primary bg-primary/5 shadow-[0_0_20px_rgba(79,102,60,0.2)]' : 'border-white/5 bg-[#111] hover:bg-[#161616]'}`}
-            >
+          {FAQS.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
               <div 
-                onClick={() => toggle(i)}
-                className="w-full p-6 flex items-center justify-between text-left group cursor-pointer"
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggle(i); }}
+                key={i} 
+                className={`border transition-all duration-300 rounded-2xl overflow-hidden ${
+                  isOpen 
+                    ? "border-primary/40 bg-gradient-to-b from-[#111] to-[#0a0a0a] shadow-[0_4px_25px_-5px_rgba(79,102,60,0.2)]" 
+                    : "border-white/5 bg-[#0d0d0d] hover:bg-[#121212]"
+                }`}
               >
-                <span className={`text-sm md:text-lg font-bold uppercase tracking-tight transition-colors ${openIndex === i ? 'text-primary' : 'text-white'}`}>
-                   {faq.q}
-                </span>
-                {openIndex === i ? (
-                  <Minus size={20} className="text-primary" />
-                ) : (
-                  <Plus size={20} className="text-gray-500 group-hover:text-gray-300" />
-                )}
+                <button 
+                  onClick={() => toggle(i)}
+                  className="w-full p-6 flex items-center justify-between text-left group cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary/45 rounded-2xl"
+                  aria-expanded={isOpen}
+                >
+                  <span className={`text-[13px] sm:text-base font-black uppercase tracking-tight transition-colors ${
+                    isOpen ? "text-[#d4af37]" : "text-white"
+                  }`}>
+                    {faq.q}
+                  </span>
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all shrink-0 ml-4 ${
+                    isOpen ? "border-primary/40 bg-primary/15 text-primary" : "border-white/5 bg-black/40 text-zinc-500 group-hover:text-zinc-300"
+                  }`}>
+                    {isOpen ? (
+                      <Minus size={16} className="stroke-[3]" />
+                    ) : (
+                      <Plus size={16} className="stroke-[3]" />
+                    )}
+                  </div>
+                </button>
+                
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1, transition: { duration: 0.3 } }}
+                      exit={{ height: 0, opacity: 0, transition: { duration: 0.2 } }}
+                    >
+                      <div className="px-6 pb-6 pt-0 text-zinc-400 font-medium text-xs sm:text-sm leading-relaxed border-t border-white/5 mt-4 pt-4 uppercase tracking-normal">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-              
-              {openIndex === i && (
-                <div className="p-6 pt-0 text-gray-400 font-medium text-sm md:text-base leading-relaxed">
-                  {faq.a}
-                </div>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

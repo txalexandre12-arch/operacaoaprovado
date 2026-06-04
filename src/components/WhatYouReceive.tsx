@@ -1,89 +1,112 @@
-import { BookOpen, FileCheck, Layers, Layout, Target } from "lucide-react";
+import { Layers, Calendar, CheckSquare, BrainCircuit, BookOpen, RefreshCcw, Landmark } from "lucide-react";
 import { motion } from "motion/react";
 
-const ITEMS = [
+interface DeliveryItem {
+  title: string;
+  desc: string;
+  badge?: string;
+  icon: any;
+}
+
+const ITEMS: DeliveryItem[] = [
   {
-    title: "Apostila PMBA",
-    desc: "Material focado no último edital com teoria direto ao ponto.",
-    iconName: "book"
+    title: "+2.000 Flashcards Estratégicos",
+    desc: "Deck cirúrgico com os pontos recorrentemente mais cobrados nas provas policiais pelas bancas organizadoras, desenhados para memorização ativada.",
+    badge: "MAIS QUERIDO",
+    icon: Layers
   },
   {
-    title: "Método de Revisão",
-    desc: "Aprenda a revisar o conteúdo sem esquecer os assuntos.",
-    iconName: "layers"
+    title: "Cronograma Estratégico",
+    desc: "O roteiro tático semanal que elimina as dúvidas sobre qual assunto focar hoje, distribuído perfeitamente até o dia do seu concurso.",
+    badge: "BÔNUS",
+    icon: Calendar
   },
   {
-    title: "Mini Simulados",
-    desc: "Treine com questões estratégicas focadas no estilo da banca.",
-    iconName: "target"
+    title: "Simulado Completo",
+    desc: "Um caderno de testes práticos com o exato perfil de questões e pegadinhas da banca policial, preparando você para as condições reais da prova.",
+    badge: "BÔNUS",
+    icon: CheckSquare
   },
   {
-    title: "Cronograma de Estudos",
-    desc: "Guia passo a passo do que estudar a cada dia da semana.",
-    iconName: "layout"
+    title: "Método de Revisão Inteligente",
+    desc: "Instruções objetivas acopladas para acelerar a transição das memórias de curto prazo para a retenção vitalícia no cérebro.",
+    badge: "SEGREDO DE ELITE",
+    icon: BrainCircuit
+  },
+  {
+    title: "Apostila Estratégica",
+    desc: "O conteúdo teórico sintetizado sem rodeios, focando na legislação e doutrina que realmente caem na prova objetiva.",
+    badge: "BÔNUS",
+    icon: BookOpen
+  },
+  {
+    title: "Atualizações Futuras",
+    desc: "Se qualquer lei ou edital mudar, as atualizações serão inseridas na sua plataforma sem nenhum custo adicional.",
+    badge: "BÔNUS 100% GRÁTIS",
+    icon: RefreshCcw
+  },
+  {
+    title: "Acesso Imediato",
+    desc: "Receba o login e senha no seu e-mail logo após a aprovação do seu pagamento, sem precisar esperar nem um minuto sequer.",
+    icon: Landmark
   }
 ];
 
-const getIcon = (name: string) => {
-  switch (name) {
-    case "book": return <BookOpen className="text-primary" size={32} />;
-    case "layers": return <Layers className="text-primary" size={32} />;
-    case "target": return <Target className="text-primary" size={32} />;
-    case "layout": return <Layout className="text-primary" size={32} />;
-    default: return null;
-  }
-};
-
 export function WhatYouReceive() {
   return (
-    <section className="py-24 px-4 bg-[#0a0a0a]">
+    <section className="py-24 px-4 bg-[#0a0a0a] border-b border-white/5 relative">
+      <div className="absolute top-0 left-0 w-full h-[5px] bg-[#d4af37]/10" />
+      
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-             Conteúdo Pronta Entrega
-          </div>
-          <h2 className="text-4xl md:text-5xl font-display font-black uppercase tracking-tighter leading-none mb-4">
-            O QUE VOCÊ <span className="text-primary italic">RECEBE</span>
+          <span className="text-[#d5ad36] text-[10px] md:text-xs font-black uppercase tracking-[0.25em] px-3.5 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full inline-block mb-4 shadow">
+            📦 Conteúdo Completo e Sem Segredos
+          </span>
+          <h2 className="text-3px md:text-5xl font-display font-black uppercase tracking-tighter leading-none mb-4 text-white">
+            TUDO O QUE VOCÊ RECEBE AO ENTRAR
           </h2>
-          <p className="text-gray-500 max-w-xl text-lg font-medium">
-             Tudo o que você precisa para dominar o concurso, reunido em uma única plataforma.
+          <p className="text-gray-400 text-xs sm:text-sm md:text-base max-w-xl mx-auto uppercase tracking-wide leading-relaxed">
+            Tenha tudo o que você precisa reunido sob uma única estrutura profissional de preparação policial.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ITEMS.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="premium-card p-8 group overflow-hidden"
-            >
-              <div className="mb-6 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
-                {getIcon(item.iconName)}
-              </div>
-              <h3 className="text-xl font-bold uppercase tracking-tight mb-4 group-hover:text-primary transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed font-medium">
-                {item.desc}
-              </p>
-            </motion.div>
-          ))}
-          
-          <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             className="premium-card p-8 bg-blue-dark/20 border-blue-dark/30 flex flex-col items-center justify-center text-center group"
-          >
-             <div className="w-16 h-16 bg-blue-dark rounded-full flex items-center justify-center text-primary mb-6 animate-pulse">
-                <Target size={32} />
-             </div>
-             <p className="font-display font-black text-2xl uppercase tracking-tighter italic">E MUITO MAIS...</p>
-             <p className="text-xs font-bold text-blue-dark/80 mt-2 uppercase">Materiais Atualizados</p>
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {ITEMS.map((item, i) => {
+            const IconComp = item.icon;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className={`p-6 md:p-8 bg-[#0d0d0d] rounded-2xl border transition-all duration-300 relative overflow-hidden flex flex-col justify-between group ${
+                  item.badge
+                    ? "border-primary/30 hover:border-primary/60 shadow-[0_4px_25px_-5px_rgba(79,102,60,0.15)]"
+                    : "border-white/5 hover:border-zinc-800"
+                }`}
+              >
+                <div>
+                  {item.badge && (
+                    <div className="absolute top-3 right-3 bg-gradient-to-r from-amber-500 to-[#d4af37] text-black text-[8px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      {item.badge}
+                    </div>
+                  )}
+
+                  <div className="w-10 h-10 bg-gradient-to-tr from-zinc-900 to-zinc-950 border border-white/10 rounded-xl flex items-center justify-center text-primary group-hover:text-amber-400 transition-colors duration-300 mb-6">
+                    <IconComp size={20} className="stroke-[2.5]" />
+                  </div>
+
+                  <h3 className="text-sm md:text-lg font-display font-black text-white uppercase tracking-tight mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-zinc-500 group-hover:text-zinc-400 transition-colors text-xs leading-relaxed font-semibold">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

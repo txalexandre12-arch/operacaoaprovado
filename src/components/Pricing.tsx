@@ -1,193 +1,138 @@
-import { Check, Star, Shield, Zap, Sparkles, X } from "lucide-react";
+import { Check, Shield, Zap, Lock } from "lucide-react";
 import { motion } from "motion/react";
 import { getCheckoutUrl } from "../lib/checkout";
 
-interface PlanFeature {
-  text: string;
-  included: boolean;
-}
-
-interface Plan {
-  name: string;
-  price: string;
-  oldPrice?: string;
-  type: string;
-  features: PlanFeature[];
-  bonuses?: string[];
-  recommended: boolean;
-  cta: string;
-  link: string;
-  iconName?: string;
-}
-
-const PLANS: Plan[] = [
-  {
-    name: "🧠 +2.000 FLASHCARDS ESTRATÉGICOS",
-    price: "17",
-    type: "",
-    iconName: "star",
-    features: [
-      { text: "+2.150 Flashcards Estratégicos", included: true },
-      { text: "Todas as Matérias Disponíveis", included: true },
-      { text: "Português", included: true },
-      { text: "Matemática e RLM", included: true },
-      { text: "Informática", included: true },
-      { text: "Direitos Humanos", included: true },
-      { text: "Direito Constitucional", included: true },
-      { text: "Direito Administrativo", included: true },
-      { text: "História e Geografia", included: true },
-      { text: "Atualizações Futuras", included: true },
-    ],
-    bonuses: [
-      "Cronograma Estratégico de Estudos",
-      "Método de Revisão Inteligente",
-      "Simulado Completo",
-      "Apostila Estratégica",
-      "Atualizações Futuras Gratuitas",
-    ],
-    recommended: true,
-    cta: "GARANTIR ACESSO",
-    link: "https://pay.wiapy.com/vYE5Z9MWuX",
-  },
-];
-
-const getIcon = (name?: string, isRecommended?: boolean) => {
-  switch (name) {
-    case "zap": return <Zap className={isRecommended ? "text-amber-400" : "text-primary"} size={20} />;
-    case "star": return <Star className={isRecommended ? "text-amber-400 fill-amber-400 animate-pulse" : "text-primary"} size={20} />;
-    default: return null;
-  }
-};
-
 export function Pricing() {
+  const planName = "OPERAÇÃO APROVADO";
+  const checkoutLink = "https://pay.wiapy.com/vYE5Z9MWuX";
+
+  // Low scroll, highly relevant core features shown ABOVE the CTA inside the card
+  const mainFeatures = [
+    "+2.000 Flashcards Estratégicos",
+    "Cronograma Estratégico de Aprovação",
+    "Simulado Completo",
+    "Acesso Vitalício"
+  ];
+
+  // Rest of features displayed elegantly below the main card under "Tudo o que você recebe"
+  const extraFeatures = [
+    "Sistema Completo de Revisão",
+    "Método de Memorização Acelerada",
+    "Apostila Estratégica",
+    "Atualizações Gratuitas",
+    "Todas as Matérias",
+    "Suporte via WhatsApp"
+  ];
+
   return (
-    <section id="acesso" className="py-24 px-4 bg-[#0a0a0a] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-dark/10 to-transparent pointer-events-none" />
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4 font-sans">
-             Oferta Exclusiva 2026
-          </div>
-          <h2 className="text-4xl md:text-5xl font-display font-black uppercase tracking-tighter leading-none mb-4">
-            GARANTA SEU <span className="text-primary italic">ACESSO AGORA</span>
+    <section id="acesso" className="py-20 px-4 bg-[#050505] relative overflow-hidden border-b border-white/5">
+      {/* Visual Ambient Glows - Sleek Dark Palette with Premium Gold Ambient Highlights */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[300px] bg-gradient-to-b from-[#d4af37]/5 to-transparent pointer-events-none" />
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[#d4af37]/3 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        
+        {/* PROBLEM 1: PROMINENT, PREMIUM HERO HEADER FOR THE OFFER */}
+        <div className="flex flex-col items-center text-center mb-8 md:mb-10">
+          <span className="text-amber-500 text-[10px] md:text-sm font-montserrat font-bold tracking-[0.25em] uppercase px-3.5 py-1.5 bg-amber-500/5 border border-amber-500/20 rounded-full inline-block mb-4 shadow-[0_0_15px_rgba(212,175,55,0.06)]">
+            ⚡ CONDIÇÃO DE LANÇAMENTO
+          </span>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-montserrat font-black uppercase tracking-tighter leading-none text-white whitespace-nowrap">
+            <span className="text-[#d4af37]">OPERAÇÃO APROVADO</span>
           </h2>
-          <p className="text-gray-500 max-w-xl text-lg font-medium italic">
-            "A oportunidade bate à porta, mas o treinamento é o que te faz entrar."
+          <p className="mt-4 text-zinc-400 text-xs sm:text-sm md:text-base max-w-xl mx-auto font-sans leading-relaxed">
+            Um sistema completo para memorizar mais, revisar melhor e acelerar sua preparação.
           </p>
         </div>
 
-        <div className="max-w-md mx-auto">
-          {PLANS.map((plan, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`relative flex flex-col p-8 transition-all duration-300 rounded-2xl border ${
-                plan.recommended 
-                  ? "bg-gradient-to-b from-[#0e120a] to-[#161c10] border-amber-500/80 scale-105 z-10 shadow-[0_0_45px_rgba(79,102,60,0.35)] ring-2 ring-amber-500/20 md:scale-[1.07]" 
-                  : "bg-[#111] border-white/5 hover:border-white/20"
-              }`}
-            >
-              {plan.recommended ? (
-                <div className="absolute -top-3.5 left-6 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-[10px] font-black px-4 py-1.5 uppercase tracking-[0.25em] whitespace-nowrap border border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.4)] rounded-full flex items-center gap-1">
-                  ⭐ ACESSO IMEDIATO
-                </div>
-              ) : (
-                <div className="absolute -top-3 left-6 bg-zinc-950 text-zinc-400 text-[10px] font-black px-4 py-1 uppercase tracking-[0.3em] whitespace-nowrap border border-white/5 shadow-2xl">
-                  VERSÃO DE ENTRADA
-                </div>
-              )}
-
-              <div className="mb-6">
-                {plan.type && (
-                  <div className={`text-[10px] font-bold mb-1 tracking-[0.2em] uppercase ${plan.recommended ? 'text-amber-400' : 'text-gray-500'}`}>
-                     {plan.type}
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <h3 className="text-2xl font-black uppercase tracking-tight leading-none text-white">{plan.name}</h3>
-                  {getIcon(plan.iconName, plan.recommended)}
-                </div>
+        {/* COMPACT HIGH-CONVERSION CARD (PROBLEM 2 & 3: Low height, everything visible on Mobile without excess scroll) */}
+        <div className="max-w-sm mx-auto mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative flex flex-col p-5 sm:p-6 transition-all duration-300 rounded-2xl border bg-[#0a0a0a] border-zinc-800 shadow-[0_15px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5"
+          >
+            {/* PROBLEM 3: Complete simplification of price block */}
+            <div className="text-center mb-5 py-4 bg-[#0d0d0d] rounded-xl border border-zinc-900 relative overflow-hidden">
+              <span className="text-amber-500 text-xs font-montserrat font-bold tracking-wider uppercase block mb-1">
+                🔥 Oferta de Lançamento
+              </span>
+              <div className="flex items-baseline justify-center gap-1 my-1">
+                <span className="text-sm font-bold text-zinc-400">R$</span>
+                <span className="text-4xl sm:text-5xl font-black font-montserrat tracking-tight text-white leading-none">17</span>
               </div>
+              <span className="text-zinc-500 text-[11px] font-medium block mt-1">
+                Pagamento Único
+              </span>
+              <span className="text-emerald-400 text-xs font-bold tracking-wide block mt-1.5 uppercase">
+                ✓ Acesso Vitalício
+              </span>
+            </div>
 
-              <div className="mb-8 block">
-                {plan.oldPrice && (
-                  <div className={`text-[12px] font-bold mb-1 ${plan.recommended ? 'text-white/60' : 'text-gray-500'}`}>
-                    De <span className="line-through decoration-white/40 decoration-2">R$ {plan.oldPrice}</span> por:
+            {/* PROBLEM 6 & BENEFÍCIOS ACIMA DO BOTÃO (Exactly specified 4 items) */}
+            <p className="text-[9px] font-montserrat font-bold text-zinc-500 uppercase tracking-widest mb-3">CONTEÚDO INCLUSO:</p>
+            <ul className="space-y-2.5 mb-5">
+              {mainFeatures.map((feature, j) => (
+                <li key={j} className="flex items-center gap-3 text-zinc-100">
+                  <div className="w-5 h-5 bg-amber-500/10 border border-amber-500/20 rounded-md flex items-center justify-center text-amber-500 shrink-0">
+                    <Check size={12} className="stroke-[3]" />
                   </div>
-                )}
-                <div className="flex items-baseline gap-1">
-                  <span className={`text-sm font-bold ${plan.recommended ? 'text-white/60' : 'text-gray-500'}`}>R$</span>
-                  <span className="text-7xl font-black font-display tracking-tighter text-white">{plan.price}</span>
-                  <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${plan.recommended ? 'text-white/60' : 'text-gray-500'}`}>Vitalício</span>
-                </div>
-              </div>
+                  <span className="text-xs sm:text-sm font-sans font-bold text-zinc-200">
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
 
-              <ul className="space-y-4 mb-6">
-                {plan.features.map((feature, j) => {
-                  if (feature.included) {
-                    return (
-                      <li key={j} className="flex items-start gap-3 md:text-sm text-[12px] font-black uppercase tracking-tight text-white">
-                        {plan.recommended ? (
-                          <Check size={14} className="text-emerald-400 mt-0.5 shrink-0 drop-shadow-[0_0_4px_rgba(52,211,153,0.6)]" />
-                        ) : (
-                          <Check size={14} className="text-emerald-500 mt-0.5 shrink-0" />
-                        )}
-                        <span>{feature.text}</span>
-                      </li>
-                    );
-                  } else {
-                    return (
-                      <li key={j} className="flex items-start gap-3 md:text-sm text-[12px] font-black uppercase tracking-tight text-zinc-600 line-through decoration-red-950/40">
-                        <X size={14} className="text-red-500 mt-0.5 shrink-0" />
-                        <span>{feature.text}</span>
-                      </li>
-                    );
-                  }
-                })}
-              </ul>
-
-              {/* Seção de bônus separada e exclusiva */}
-              {plan.bonuses && plan.bonuses.length > 0 && (
-                <div className="mt-2 mb-8 p-5 bg-gradient-to-br from-amber-500/10 to-amber-600/[0.03] border border-dashed border-amber-500/35 rounded-xl space-y-3 relative overflow-hidden shadow-[inset_0_1px_20px_rgba(245,158,11,0.02)]">
-                  <div className="absolute top-0 right-0 bg-gradient-to-l from-amber-500 to-amber-600 text-black text-[9px] font-black px-2.5 py-0.5 uppercase tracking-[0.1em] rounded-bl-lg font-sans">
-                    BÔNUS EXCLUSIVOS
-                  </div>
-                  
-                  <div className="text-amber-400 text-[11px] font-black uppercase tracking-[0.15em] flex items-center gap-2 mb-1">
-                    <Sparkles size={12} className="animate-pulse shrink-0" />
-                    <span>🎁 100% GRATUITO</span>
-                  </div>
-                  
-                  <ul className="space-y-2.5">
-                    {plan.bonuses.map((bonus, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2.5 text-[11px] md:text-[13px] font-bold text-white uppercase tracking-tight leading-snug">
-                        <span className="text-lg shrink-0 -mt-0.5 select-none filter drop-shadow-[0_2px_4px_rgba(245,158,11,0.25)]">🎁</span>
-                        <span className="font-sans font-black text-amber-50/95">{bonus}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
+            {/* PROBLEM 4 & 5: Dourado Premium CTA with elegant size and spacing */}
+            <div className="space-y-4">
               <a 
-                href={getCheckoutUrl(plan.link)}
+                href={getCheckoutUrl(checkoutLink)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-3 px-6 font-sans font-black rounded-lg uppercase tracking-wide transition-all text-base text-center block ${
-                plan.recommended 
-                  ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black hover:scale-[1.02] shadow-[0_4px_25px_rgba(245,158,11,0.3)]" 
-                  : "bg-primary text-white hover:bg-neutral-900 transition-colors"
-                }`}
+                className="w-full py-3 px-6 font-montserrat font-bold rounded-xl uppercase tracking-wider transition-all text-xs sm:text-sm text-center block bg-gradient-to-r from-amber-500 via-[#d4af37] to-amber-300 text-black hover:brightness-110 active:scale-[0.98] shadow-[0_4px_20px_rgba(212,175,55,0.25)] cursor-pointer font-extrabold"
               >
-                {plan.cta}
+                GARANTIR ACESSO IMEDIATO →
               </a>
-            </motion.div>
-          ))}
+              
+              {/* Trust badges below button (COMPACT / LIGHT / DISCRETE) */}
+              <div className="flex items-center justify-center gap-x-4 gap-y-1 flex-wrap text-[9px] text-zinc-500 font-montserrat font-semibold tracking-wider uppercase">
+                <span className="flex items-center gap-1">🔒 Compra Segura</span>
+                <span className="flex items-center gap-1">⚡ Acesso Imediato</span>
+                <span className="flex items-center gap-1">🛡️ Garantia de 7 Dias</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
+
+        {/* TUDO O QUE VOCÊ DEVE RECEBER (AFTER THE BUTTON - Elegant/Minimal Section) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6 border-t border-white/5 pt-10 max-w-2xl mx-auto"
+        >
+          <h3 className="text-center font-montserrat font-bold text-zinc-400 text-[11px] tracking-[0.2em] uppercase mb-6">
+            📦 Tudo o que você também recebe:
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {extraFeatures.map((feature, index) => (
+              <div 
+                key={index} 
+                className="p-3.5 rounded-xl bg-[#090909] border border-white/[0.03] flex items-center gap-3 hover:border-zinc-800 transition-all duration-300"
+              >
+                <div className="w-5 h-5 rounded-md bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-[#d4af37] shrink-0">
+                  <Check size={11} className="stroke-[3]" />
+                </div>
+                <span className="text-xs font-montserrat font-bold text-zinc-300">
+                  {feature}
+                </span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
