@@ -14,15 +14,14 @@ export function Hero() {
         transition={{ duration: 0.8 }}
         className="flex flex-col items-center px-4 relative z-10 w-full max-w-4xl text-center"
       >
-        {/* Floating badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs font-black uppercase tracking-[0.2em] rounded-full mb-6 text-glow">
-          <Sparkles size={12} className="animate-pulse text-amber-500" />
-          <span>Método Definitivo de Memorização</span>
-        </div>
+
 
         {/* Headline */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-snug sm:leading-tight md:leading-normal uppercase tracking-wide max-w-4xl mb-6 font-display">
-          A SENSAÇÃO DE ESTUDAR E ESQUECER TUDO <span className="text-red-500 font-extrabold filter drop-shadow-[0_2px_10px_rgba(239,68,68,0.2)]">ACABA HOJE</span>.
+          CONQUISTE SUA FARDA.<br className="hidden sm:inline" />{" "}
+          <span className="text-[#d4af37] font-extrabold filter drop-shadow-[0_2px_10px_rgba(212,175,55,0.25)]">
+            SEM PASSAR HORAS E HORAS RELENDO MATÉRIA.
+          </span>
         </h1>
 
         {/* Subheadline */}
