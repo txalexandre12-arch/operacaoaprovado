@@ -105,7 +105,7 @@ export function Testimonials() {
                 className="snap-start shrink-0 w-[290px] sm:w-[320px] bg-[#0c0c0c] border border-white/5 rounded-2xl overflow-hidden p-3 hover:border-primary/40 hover:shadow-[0_10px_30px_rgba(79,102,60,0.15)] flex flex-col justify-between transition-all"
               >
                 {/* Visual Feedback screenshot panel */}
-                <div className="relative bg-black rounded-xl overflow-hidden mb-4 border border-white/5 p-1 flex justify-center items-center">
+                <div className="relative bg-black rounded-xl overflow-hidden border border-white/5 p-1 flex justify-center items-center">
                   <img
                     src={img}
                     alt={`Feedback do Aluno ${i + 1}`}
@@ -113,11 +113,6 @@ export function Testimonials() {
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
-                </div>
-
-                {/* Snip card description / golden subtitle */}
-                <div className="bg-black/40 rounded-xl p-3 border border-dashed border-zinc-800/80">
-                  <p className="text-[11px] sm:text-xs font-bold text-zinc-300 uppercase tracking-tight leading-relaxed italic" dangerouslySetInnerHTML={{ __html: SNIPPETS[i] }} />
                 </div>
               </motion.div>
             ))}
